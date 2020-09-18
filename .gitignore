@@ -1,0 +1,59 @@
+old_dn.js
+.gitignorelet ethereum = window.ethereum;
+let web3 = window.web3;
+if (typeof ethereum !== 'undefined') {
+ await ethereum.enable();
+ web3 = new Web3(ethereum);
+} else if (typeof web3 !== 'undefined') {
+ web3 = new Web3(web3.currentProvider);
+} else {
+ web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER));
+}
+
+
+let selectedAccount = web3.eth.accounts[0]; 
+
+let allDarknodes;
+let privateDarknodes;
+
+
+let DarknodeRegistry = new window.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a")
+
+let DarknodePayment = new window.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9")
+
+async function getAllDarknodes() {
+    await DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {allDarknodes = value;});
+}
+
+async function sortAllDarknodes() {
+    privateDarknodes = [];
+    for (Darknode in allDarknodes) {
+        hits = [];
+        operator = await DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
+        if (operator == selectedAccount) {
+            privateDarknodes.push(allDarknodes[Darknode]);
+        }
+    }
+    return privateDarknodes;
+}
+
+
+
+async function updateDarknodes() {
+    await getAllDarknodes();
+    await sortAllDarknodes();
+    document.getElementById("Darknodes").innerText = privateDarknodes
+}
+  
+function writeFeeWithdrawal() {
+    renBTC = "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d"
+    DarknodePayment.methods.withdrawMultiple(privateDarknodes, [renBTC]).send();
+}
+
+
+
+
+window.addEventListener('load', async () => {
+    init();
+    document.querySelector("#btn-connect").addEventListener("click", onConnect);
+    document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);

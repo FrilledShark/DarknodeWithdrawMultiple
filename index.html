@@ -20,34 +20,20 @@
 </head>
 
 <body>
-    <p>No wallet connected. Connect wallet.</p>
-  
-    <div id="prepare">
-        <button class="btn btn-primary" id="btn-connect">
-        Connect wallet
-        </button>
+    <div id="app">
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" v-if="selectedAccount">
+                        Welcome {{ selectedAccount }}.
+                    </h1>
+                    <h1 class="title" v-else>
+                        <button class="is-large button" id="connect">Connect wallet</button>
+                    </h1>
+                </div>
+            </div>
+        </section>
     </div>
-  
-    <div id="connected" style="display: none">
-
-        <button class="btn btn-primary" id="btn-disconnect">
-        Disconnect wallet
-        </button>
-
-        <hr>
-
-        <div id="network">
-        <p>
-            <strong>Connected blockchain:</strong> <span id="network-name"></span>
-        </p>
-
-        <p>
-            <strong>Selected account:</strong> <span id="selected-account"></span>
-        </p>
-
-        </div>
-
-        <hr>
 
         
 
@@ -63,8 +49,8 @@
     <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
 
-
-    <script src="/DarknodeWithdrawMultiple/dn.js"></script>
+    <script src="abi.js"></script>
+    <script src="dn.js"></script>
 </body>
 
 </html>
