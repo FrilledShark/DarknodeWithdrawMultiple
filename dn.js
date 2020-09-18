@@ -2,106 +2,19 @@ DarknodeRegistryProxyABI = [{"anonymous":false,"inputs":[{"indexed":true,"intern
 
 DarknodePaymentABI = [{"inputs":[{"internalType":"string","name":"_VERSION","type":"string"},{"internalType":"contract DarknodeRegistryLogicV1","name":"_darknodeRegistry","type":"address"},{"internalType":"contract DarknodePaymentStore","name":"_darknodePaymentStore","type":"address"},{"internalType":"uint256","name":"_cyclePayoutPercent","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_newCycleChanger","type":"address"},{"indexed":true,"internalType":"address","name":"_oldCycleChanger","type":"address"}],"name":"LogCycleChangerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_darknode","type":"address"},{"indexed":false,"internalType":"uint256","name":"_cycle","type":"uint256"}],"name":"LogDarknodeClaim","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"contract DarknodeRegistryLogicV1","name":"_previousDarknodeRegistry","type":"address"},{"indexed":true,"internalType":"contract DarknodeRegistryLogicV1","name":"_nextDarknodeRegistry","type":"address"}],"name":"LogDarknodeRegistryUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_darknodeOperator","type":"address"},{"indexed":true,"internalType":"address","name":"_darknodeID","type":"address"},{"indexed":true,"internalType":"address","name":"_token","type":"address"},{"indexed":false,"internalType":"uint256","name":"_value","type":"uint256"}],"name":"LogDarknodeWithdrew","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_payer","type":"address"},{"indexed":true,"internalType":"address","name":"_token","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"LogPaymentReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_newPercent","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_oldPercent","type":"uint256"}],"name":"LogPayoutPercentChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_token","type":"address"}],"name":"LogTokenDeregistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_token","type":"address"}],"name":"LogTokenRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"ETHEREUM","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"VERSION","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"changeCycle","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_darknode","type":"address"}],"name":"claim","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"claimOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"claimStoreOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"currentCycle","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"currentCyclePayoutPercent","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"currentCycleRewardPool","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cycleChanger","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cycleStartTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_darknodeID","type":"address"},{"internalType":"address","name":"_token","type":"address"}],"name":"darknodeBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"darknodeRegistry","outputs":[{"internalType":"contract DarknodeRegistryLogicV1","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"_value","type":"uint256"},{"internalType":"address","name":"_token","type":"address"}],"name":"deposit","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"deregisterToken","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"forward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_nextOwner","type":"address"}],"name":"initialize","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nextCyclePayoutPercent","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pendingOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pendingTokens","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"previousCycle","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"previousCycleRewardShare","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"registerToken","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"registeredTokenIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"registeredTokens","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewardClaimed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"store","outputs":[{"internalType":"contract DarknodePaymentStore","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"tokenPendingRegistration","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract DarknodePayment","name":"_newOwner","type":"address"}],"name":"transferStoreOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"unclaimedRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_addr","type":"address"}],"name":"updateCycleChanger","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract DarknodeRegistryLogicV1","name":"_darknodeRegistry","type":"address"}],"name":"updateDarknodeRegistry","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"_percent","type":"uint256"}],"name":"updatePayoutPercentage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_darknode","type":"address"},{"internalType":"address","name":"_token","type":"address"}],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address[]","name":"_darknodes","type":"address[]"},{"internalType":"address[]","name":"_tokens","type":"address[]"}],"name":"withdrawMultiple","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 
-
-const Web3Modal = window.Web3Modal.default;
-const WalletConnectProvider = window.WalletConnectProvider.default;
-
-// Web3modal instance
-let web3Modal
-
-// Chosen wallet provider given by the dialog window
-let provider;
-
-
-// Address of the selected account
-let selectedAccount;
-
-function init() {
-
-    console.log("Initializing example");
-    console.log("WalletConnectProvider is", WalletConnectProvider);
-    console.log("Fortmatic is", Fortmatic);
-    console.log("window.web3 is", window.web3, "window.ethereum is", window.ethereum);
-  
-    // Check that the web page is run in a secure context,
-    // as otherwise MetaMask won't be available
-    // if(location.protocol !== 'https:') {
-    //   // https://ethereum.stackexchange.com/a/62217/620
-    //   const alert = document.querySelector("#alert-error-https");
-    //   alert.style.display = "block";
-    //   document.querySelector("#btn-connect").setAttribute("disabled", "disabled")
-    //   return;
-    // }
-  
-    // Tell Web3modal what providers we have available.
-    // Built-in web browser provider (only one can exist as a time)
-    // like MetaMask, Brave or Opera is added automatically by Web3modal
-    const providerOptions = {
-    };
-  
-    web3Modal = new Web3Modal({
-      cacheProvider: false, // optional
-      providerOptions, // required
-      disableInjectedProvider: false, // optional. For MetaMask / Brave / Opera.
-    });
-  
-    console.log("Web3Modal instance is", web3Modal);
+let ethereum = window.ethereum;
+let web3 = window.web3;
+if (typeof ethereum !== 'undefined') {
+ await ethereum.enable();
+ web3 = new Web3(ethereum);
+} else if (typeof web3 !== 'undefined') {
+ web3 = new Web3(web3.currentProvider);
+} else {
+ web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER));
 }
 
 
-async function onDisconnect() {
-
-    console.log("Killing the wallet connection", provider);
-  
-    // TODO: Which providers have close method?
-    if(provider.close) {
-      await provider.close();
-  
-      // If the cached provider is not cleared,
-      // WalletConnect will default to the existing session
-      // and does not allow to re-scan the QR code with a new wallet.
-      // Depending on your use case you may want or want not his behavir.
-      await web3Modal.clearCachedProvider();
-      provider = null;
-    }
-  
-    selectedAccount = null;
-  
-    // Set the UI back to the initial state
-    document.querySelector("#prepare").style.display = "block";
-    document.querySelector("#connected").style.display = "none";
-}
-
-  async function onConnect() {
-
-    console.log("Opening a dialog", web3Modal);
-    try {
-      provider = await web3Modal.connect();
-    } catch(e) {
-      console.log("Could not get a wallet connection", e);
-      return;
-    }
-  
-    // Subscribe to accounts change
-    provider.on("accountsChanged", (accounts) => {
-      fetchAccountData();
-    });
-  
-    // Subscribe to chainId change
-    provider.on("chainChanged", (chainId) => {
-      fetchAccountData();
-    });
-  
-    // Subscribe to networkId change
-    provider.on("networkChanged", (networkId) => {
-      fetchAccountData();
-    });
-  
-    await refreshAccountData();
-}
-
-
-web3 = new Web3(provider);
+let selectedAccount = web3.eth.accounts[0]; 
 
 let allDarknodes;
 let privateDarknodes;
