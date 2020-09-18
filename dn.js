@@ -44,9 +44,9 @@ let app = new Vue({
             this.getAllDarknodes();
         },
         allDarknodes: function (val, oldval) {
-            sortAllDarknodes(this.allDarknodes).then((result) => {
-                console.log(result); app.privateDarknodes = result;
-            });
+            // sortAllDarknodes(this.allDarknodes).then((result) => {
+            //     console.log(result); app.privateDarknodes = result;
+            // });
         }
     },
     created() {}
