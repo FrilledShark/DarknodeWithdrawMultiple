@@ -36,17 +36,18 @@ let app = new Vue({
         getAllDarknodes: function() {
             this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {app.allDarknodes = value;});
         },
-        // sortAllDarknodes: function() {
-        //     privateDarknodes = [];
-        //     for (Darknode in allDarknodes) {
-        //         hits = [];
-        //         operator = await DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
-        //         if (operator == selectedAccount) {
-        //             privateDarknodes.push(allDarknodes[Darknode]);
-        //         }
-        //     }
-        //     return privateDarknodes;
-        // }
+        sortAllDarknodes: function() {
+            this.privateDarknodes = [];
+            for (Darknode in this.allDarknodes) {
+                hits = [];DarknodeRegistry.methods.getDarknodeOperator(this.allDarknodes[Darknode]).call().then(function(operator) {
+                    if (operator == app.selectedAccount) {
+                        app.privateDarknodes.push(app.allDarknodes[Darknode]);
+                    }
+                });
+                
+            }
+            return privateDarknodes;
+        }
     },
     watch: {
         web3: function (val, oldval) {
