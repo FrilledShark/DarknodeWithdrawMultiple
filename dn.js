@@ -129,7 +129,7 @@ async function sortAllDarknodes() {
 
 
 
-function updateDarknodes() {
+async function updateDarknodes() {
     await getAllDarknodes();
     await sortAllDarknodes();
     document.getElementById("Darknodes").innerText = privateDarknodes
