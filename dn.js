@@ -43,7 +43,7 @@ let app = new Vue({
         //         }
         //     }
         //     return privateDarknodes;
-        }
+        // }
     },
     watch: {
         web3: function (val, oldval) {
