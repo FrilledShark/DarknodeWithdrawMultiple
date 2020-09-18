@@ -28,7 +28,7 @@
                         Welcome {{ selectedAccount }}.
                     </h1>
                     <h1 class="title" v-else>
-                        <button class="is-large button" id="connect">Connect wallet</button>
+                        <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
                     </h1>
                 </div>
             </div>
