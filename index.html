@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alexander's Darknode portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script scr="https://cdn.jsdelivr.net/npm/web3modal@latest"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css" />
+
+    <style scoped>
+        .select select {
+            text-rendering: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <p>No wallet connected. Connect wallet.</p>
+  
+    <div id="prepare">
+        <button class="btn btn-primary" id="btn-connect">
+        Connect wallet
+        </button>
+    </div>
+  
+    <div id="connected" style="display: none">
+
+        <button class="btn btn-primary" id="btn-disconnect">
+        Disconnect wallet
+        </button>
+
+        <hr>
+
+        <div id="network">
+        <p>
+            <strong>Connected blockchain:</strong> <span id="network-name"></span>
+        </p>
+
+        <p>
+            <strong>Selected account:</strong> <span id="selected-account"></span>
+        </p>
+
+        </div>
+
+        <hr>
+
+        
+
+    </div>
+    <button onclick="updateDarknodes()">Update Darknodes</button>
+    <div id="Darknodes"></div>
+
+    <button onclick="writeFeeWithdrawal()">Withdraw fees from above Darknodes</button>
+  
+    <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains/lib/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+
+
+    <script src="dn.js"></script>
+</body>
+
+</html>
