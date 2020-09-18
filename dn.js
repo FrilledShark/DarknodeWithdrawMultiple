@@ -2,7 +2,7 @@ async function sortAllDarknodes(allDarknodes) {
     let privateDarknodes = [];
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
-        if (operator == selectedAccount) {
+        if (operator == app.selectedAccount) {
             privateDarknodes.push(allDarknodes[Darknode]);
         }
     }
