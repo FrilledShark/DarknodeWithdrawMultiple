@@ -1,7 +1,6 @@
-async function sortAllDarknodes() {
-    privateDarknodes = [];
+async function sortAllDarknodes(allDarknodes) {
+    let privateDarknodes = [];
     for (Darknode in allDarknodes) {
-        hits = [];
         operator = await DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
         if (operator == selectedAccount) {
             privateDarknodes.push(allDarknodes[Darknode]);
@@ -36,25 +35,18 @@ let app = new Vue({
         getAllDarknodes: function() {
             this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {app.allDarknodes = value;});
         },
-        sortAllDarknodes: function() {
-            this.privateDarknodes = [];
-            for (Darknode in this.allDarknodes) {
-                this.DarknodeRegistry.methods.getDarknodeOperator(this.allDarknodes[Darknode]).call().then(function(operator) {
-                    if (operator == app.selectedAccount) {
-                        app.privateDarknodes.push(app.allDarknodes[Darknode]);
-                    }
-                });
-            }
-        }
     },
     watch: {
         web3: function (val, oldval) {
-            this.selectedAccount = web3.eth.accounts[0]; 
+            this.selectedAccount = this.web3.eth.accounts[0]; 
             this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
             this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
+            this.getAllDarknodes();
         },
         allDarknodes: function (val, oldval) {
-            this.sortAllDarknodes();
+            sortAllDarknodes(this.allDarknodes).then((result) => {
+                console.log(result); app.privateDarknodes = result;
+            });
         }
     },
     created() {}
