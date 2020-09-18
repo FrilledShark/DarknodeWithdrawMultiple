@@ -31,17 +31,15 @@ let app = new Vue({
         setupWeb3: function () {
             let ethereum = window.ethereum;
             this.web3 = new Web3(ethereum);
+            this.selectedAccount = this.web3.eth.accounts[0]; 
+            this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
+            this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
         },
         getAllDarknodes: function() {
             this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {app.allDarknodes = value;});
         },
     },
     watch: {
-        web3: function (val, oldval) {
-            this.selectedAccount = this.web3.eth.accounts[0]; 
-            this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
-            this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
-        },
         allDarknodes: function (val, oldval) {
             // sortAllDarknodes(this.allDarknodes).then((result) => {
             //     console.log(result); app.privateDarknodes = result;
