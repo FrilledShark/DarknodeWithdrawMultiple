@@ -39,14 +39,12 @@ let app = new Vue({
         sortAllDarknodes: function() {
             this.privateDarknodes = [];
             for (Darknode in this.allDarknodes) {
-                hits = [];DarknodeRegistry.methods.getDarknodeOperator(this.allDarknodes[Darknode]).call().then(function(operator) {
+                this.DarknodeRegistry.methods.getDarknodeOperator(this.allDarknodes[Darknode]).call().then(function(operator) {
                     if (operator == app.selectedAccount) {
                         app.privateDarknodes.push(app.allDarknodes[Darknode]);
                     }
                 });
-                
             }
-            return privateDarknodes;
         }
     },
     watch: {
@@ -54,6 +52,9 @@ let app = new Vue({
             this.selectedAccount = web3.eth.accounts[0]; 
             this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
             this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
+        },
+        allDarknodes: function (val, oldval) {
+            this.sortAllDarknodes();
         }
     },
     created() {}
