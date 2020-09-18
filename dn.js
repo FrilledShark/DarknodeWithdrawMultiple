@@ -31,7 +31,7 @@ let app = new Vue({
             this.web3 = new Web3(ethereum);
         },
         getAllDarknodes: function() {
-            this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {this.allDarknodes = value;});
+            this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {this.allDarknodes = value;console.log(value);});
         },
         // sortAllDarknodes: function() {
         //     privateDarknodes = [];
