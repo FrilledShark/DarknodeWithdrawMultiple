@@ -41,7 +41,6 @@ let app = new Vue({
             this.selectedAccount = this.web3.eth.accounts[0]; 
             this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
             this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
-            this.getAllDarknodes();
         },
         allDarknodes: function (val, oldval) {
             // sortAllDarknodes(this.allDarknodes).then((result) => {
