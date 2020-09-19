@@ -33,7 +33,7 @@
                     <h2 v-if="privateDarknodes"><span class="icon" v-if="loadingDarknodes">
                         <i class="fas fa-money-bill-wave fa-pulse"></i>
                       </span>
-                        You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}
+                        You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes.replace('"', "")}}
                     </h2>
                     <br>
                     <h2 v-if="fees">They have earned {{fees/10**8}} renBTC</h2>
