@@ -8,6 +8,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
             app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
         }
     }
+    app.loadingDarknodes = false;
 }
 
 
