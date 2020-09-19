@@ -26,12 +26,14 @@ let app = new Vue({
         },
         setProvider: function() {
             let ethereum = window.ethereum;
-            ethereum.enable().then(this.setupWeb3());
+            ethereum.enable().then(function(x) {this.setupWeb3()});
         },
         setupWeb3: function () {
             let ethereum = window.ethereum;
             this.web3 = new Web3(ethereum);
-            this.selectedAccount = this.web3.eth.accounts[0]; 
+            this.web3.eth.getAccounts().then(
+                (accounts) => app.selectedAccount = accounts[0]
+            ); 
             this.DarknodeRegistry = new this.web3.eth.Contract(DarknodeRegistryProxyABI, "0x2d7b6c95afeffa50c068d50f89c5c0014e054f0a");
             this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
         },
