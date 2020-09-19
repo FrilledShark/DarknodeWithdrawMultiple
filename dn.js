@@ -5,7 +5,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
-            app.fees += await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC);
+             console.log(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC));
         }
     }
 }
