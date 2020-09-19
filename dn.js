@@ -1,8 +1,9 @@
-async function sortAllDarknodes(allDarknodes) {
+async function sortAllDarknodes(allDarknodes, selectedAccount) {
     let privateDarknodes = [];
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
-        if (operator == app.selectedAccount) {
+        console.log(allDarknodes[Darknode]);
+        if (operator == selectedAccount) {
             privateDarknodes.push(allDarknodes[Darknode]);
         }
     }
@@ -46,7 +47,7 @@ let app = new Vue({
             this.getAllDarknodes();
         },
         allDarknodes: function (val, oldval) {
-            sortAllDarknodes(this.allDarknodes).then((result) => {
+            sortAllDarknodes(this.allDarknodes, this.selectedAccount).then((result) => {
                 console.log(result); app.privateDarknodes = result;
             });
         }
