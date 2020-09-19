@@ -30,12 +30,14 @@
                     <h1 class="title" v-else>
                         <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
                     </h1>
+                    <br>
                     <h2 v-if="privateDarknodes"><span class="icon" v-if="loadingDarknodes">
                         <i class="fas fa-money-bill-wave fa-pulse"></i>
                       </span>
                         You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}</h2>
                     <h2 v-if="fees">They have earned {{fees/10**8}} renBTC</h2>
-                    <button v-if="privateDarknodes" class="button" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
+                    <br>
+                    <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
                 </div>
             </div>
         </section>
