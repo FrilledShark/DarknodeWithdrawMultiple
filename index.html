@@ -35,11 +35,12 @@
                       </span>
                         You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}</h2>
                     <h2 v-if="fees">They have earned {{fees/10**8}} renBTC</h2>
+                    <button v-if="!loadingDarknodes" class="button" onclick="writeFeeWithdrawal()">Withdraw fees from above Darknodes</button>
                 </div>
             </div>
         </section>
 
-        <button class="button" onclick="writeFeeWithdrawal()">Withdraw fees from above Darknodes</button>
+        
     </div>
 
     
