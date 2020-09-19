@@ -31,19 +31,15 @@
                         <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
                     </h1>
                     <h2 v-if="privateDarknodes">You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}</h2>
+                    <h2 v-if="fees">They have earned {{fees/10**8}} renBTC</h2>
                 </div>
             </div>
         </section>
-        <div class="container">
-            <div class="columns">
-                <div class="column" v-for="dn in privateDarknodes">
-                    Hello
-                </div>
-            </div>
-        </div>
+
+        <button onclick="writeFeeWithdrawal()">Withdraw fees from above Darknodes</button>
     </div>
 
-    <button onclick="writeFeeWithdrawal()">Withdraw fees from above Darknodes</button>
+    
   
     <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
