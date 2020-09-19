@@ -25,12 +25,15 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" v-if="selectedAccount">
-                        v2 Welcome {{ selectedAccount }}.
+                        Welcome {{ selectedAccount }}.
                     </h1>
                     <h1 class="title" v-else>
                         <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
                     </h1>
-                    <h2 v-if="privateDarknodes">You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}</h2>
+                    <h2 v-if="privateDarknodes"><span class="icon" v-if="loadingDarknondes">
+                        <i class="fas fa-money-bill-wave fa-pulse"></i>
+                      </span>
+                        You have {{privateDarknodes.length}} Darknodes: {{privateDarknodes}}</h2>
                     <h2 v-if="fees">They have earned {{fees/10**8}} renBTC</h2>
                 </div>
             </div>
