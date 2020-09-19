@@ -57,7 +57,7 @@ let app = new Vue({
         allDarknodes: function (val, oldval) {
             this.loadingDarknodes = true;
             sortAllDarknodes(this.allDarknodes, this.selectedAccount).then((result) => {
-                this.loadingDarknodes = false;
+                app.loadingDarknodes = false;
             });
         },
         loadingDarknodes: function(val,oldval) {
