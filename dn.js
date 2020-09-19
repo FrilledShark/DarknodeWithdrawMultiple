@@ -26,7 +26,7 @@ let app = new Vue({
         },
         setProvider: function() {
             let ethereum = window.ethereum;
-            ethereum.enable().then(function(x) {this.setupWeb3()});
+            ethereum.enable().then(function(x) {app.setupWeb3()});
         },
         setupWeb3: function () {
             let ethereum = window.ethereum;
