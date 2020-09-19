@@ -48,7 +48,7 @@ let app = new Vue({
         getAllFees: function () {
         },
         writeFeeWithdrawal: function() {
-            this.DarknodePayment.methods.withdrawMultiple(this.privateDarknodes, [this.renBTC]).send();
+            this.DarknodePayment.methods.withdrawMultiple(this.privateDarknodes, [this.renBTC]).send({from: this.selectedAccount});
         },
     },
     watch: {
