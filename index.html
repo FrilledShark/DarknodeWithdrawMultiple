@@ -36,7 +36,7 @@
                         You have {{privateDarknodes.length}} Darknodes: {{"[" + String(privateDarknodes).replace('"', "").replace(",", ", ") + "]"}}
                     </h2>
                     <br>
-                    <h2 v-if="fees">They have earned {{(fees/10**8).toFixed(6)}} renBTC and {{(pendingRewardPool*privateDarknodes.length/allDarknodes.length/10**8.toFixed(6))}} renBTC pending</h2>
+                    <h2 v-if="fees">They have earned {{fees/10**8}} renBTC and {{pendingRewardPool*privateDarknodes.length/allDarknodes.length/10**8}} renBTC pending</h2>
                     <br>
                     <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
                 </div>
