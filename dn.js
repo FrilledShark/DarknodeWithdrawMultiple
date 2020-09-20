@@ -54,7 +54,6 @@ let app = new Vue({
                 app.pendingRewardPool = value
             });
         }
-        }
     },
     watch: {
         web3: function (val, oldval) {
