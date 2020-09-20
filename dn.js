@@ -17,6 +17,7 @@ let app = new Vue({
     data: {
         selectedAccount: "",
         fees: 0,
+        pendingRewardPool: 0,
         web3: "",
         DarknodeRegistry: "",
         DarknodePayment: "",
@@ -45,11 +46,15 @@ let app = new Vue({
         getAllDarknodes: function() {
             this.DarknodeRegistry.methods.getDarknodes("0xe9578275A14f61f7cAF35e47ca358C7Ac89B254E", 0).call().then(function (value) {app.allDarknodes = value;});
         },
-        getAllFees: function () {
-        },
         writeFeeWithdrawal: function() {
             this.DarknodePayment.methods.withdrawMultiple(this.privateDarknodes, [this.renBTC]).send({from: this.selectedAccount});
         },
+        getPendingFees: function() {
+            this.DarknodePayment.methods.currentCycleRewardPool(this.renBTC).then(function (value) {
+                app.pendingRewardPool = value
+            });
+        }
+        }
     },
     watch: {
         web3: function (val, oldval) {
@@ -67,8 +72,7 @@ let app = new Vue({
             } else {
                 console.log("Darknodes have finished loading.")
             }
-        }
-        
+        },
     },
-    created() {}
+    // created() {}
 });
