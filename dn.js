@@ -50,7 +50,7 @@ let app = new Vue({
             this.DarknodePayment.methods.withdrawMultiple(this.privateDarknodes, [this.renBTC]).send({from: this.selectedAccount});
         },
         getPendingFees: function() {
-            this.DarknodePayment.methods.currentCycleRewardPool(this.renBTC).then(function (value) {
+            this.DarknodePayment.methods.currentCycleRewardPool(this.renBTC).call().then(function (value) {
                 app.pendingRewardPool = value
             });
         }
@@ -64,6 +64,7 @@ let app = new Vue({
             sortAllDarknodes(this.allDarknodes, this.selectedAccount).then((result) => {
                 app.loadingDarknodes = false;
             });
+            this.getPendingFees();
         },
         loadingDarknodes: function(val,oldval) {
             if (val) {
