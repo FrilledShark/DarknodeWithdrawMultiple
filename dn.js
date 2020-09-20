@@ -53,6 +53,9 @@ let app = new Vue({
             this.DarknodePayment.methods.currentCycleRewardPool(this.renBTC).call().then(function (value) {
                 app.pendingRewardPool = value
             });
+        },
+        roundValue: function (val) {
+            return val.toFixed(6)
         }
     },
     watch: {
