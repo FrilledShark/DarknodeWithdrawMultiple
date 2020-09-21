@@ -3,7 +3,14 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     app.fees = 0;
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
-        app.indexSearched = Darknode;
+        app.indexSearched = Darknode
+        app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator}
+        let temp_arr_one = app.operatorInformation[operator]
+        let temp_arr_two = [allDarknodes[Darknode]]
+        if (app.operatorInformation[operator])
+            {app.operatorInformation[operator] = temp_arr_two.concat(temp_arr_one)}
+        else
+            {app.operatorInformation[operator] = temp_arr_two}
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
             app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
@@ -16,6 +23,8 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
 let app = new Vue({
     el: '#app',
     data: {
+        darknodesInformation: [],
+        operatorInformation: [],
         indexSearched: 0,
         selectedAccount: "",
         fees: 0,
