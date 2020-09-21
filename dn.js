@@ -44,7 +44,7 @@ let app = new Vue({
             this.DarknodePayment = new this.web3.eth.Contract(DarknodePaymentABI, "0x098e1708b920EFBdD7afe33Adb6a4CBa30c370B9");
         },
         getAllDarknodes: function() {
-            this.DarknodeRegistry.methods.getDarknodes("0xbCC74972fac42dB0b5D3a4532E9Ff6C7D30f2bd5", 0).call().then(function (value) {app.allDarknodes = value;});
+            this.DarknodeRegistry.methods.getDarknodes("0xb271f0e9dc077905232139c2ce1583dabbe6eb9e", 0).call().then(function (value) {app.allDarknodes = value;});
         },
         writeFeeWithdrawal: function() {
             this.DarknodePayment.methods.withdrawMultiple(this.privateDarknodes, [this.renBTC]).send({from: this.selectedAccount});
