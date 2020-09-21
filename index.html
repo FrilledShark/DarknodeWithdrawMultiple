@@ -34,7 +34,7 @@
                         <span class="icon" v-if="loadingDarknodes">
                             <i class="fas fa-money-bill-wave fa-pulse"></i>
                         </span>
-                        {{getSearchPercentage}} % of all Darknodes searched.
+                        {{getSearchPercentage()}} % of all Darknodes searched.
                     </h2>
                     <h2 v-if="privateDarknodes">
                         You have {{privateDarknodes.length}} Darknodes: {{"[" + String(privateDarknodes).replace('"', "").replace(",", ", ") + "]"}}
