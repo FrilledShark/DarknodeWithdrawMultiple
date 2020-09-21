@@ -51,11 +51,15 @@
                                 <div class="column" v-for="dn in privateDarknodes">
                                     <div class="card">
                                         <header class="card-header">
-                                            {{dn}}
+                                            <p class="card-header-title">
+                                                {{dn}}
+                                            </p>
                                         </header>
                                         <div class="card-content">
                                             <div class="content">
                                                 Operator: {{darknodesInformation[dn].operator}}
+                                                Fees: {{roundValue(darknodesInformation[dn].fee)}}
+                                                Pending Fees: Fees: {{roundValue(pendingRewardPool/allDarknodes.length/10**8)}}
                                             </div>
                                         </div>
                                     </div>
