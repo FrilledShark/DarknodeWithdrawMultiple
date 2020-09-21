@@ -55,7 +55,7 @@
                                         </header>
                                         <div class="card-content">
                                             <div class="content">
-                                                Operator: {{darknodesInformation[dn]}}
+                                                Operator: {{darknodesInformation[dn].operator}}
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(inf, key) in operatorInformation">
+                                    <tr v-for="(inf, key) in sortedOperators()" :key="allDarknodes">
                                         <td>
                                             {{key}}
                                         </td>
