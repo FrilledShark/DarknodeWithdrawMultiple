@@ -6,8 +6,8 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         if (!app.operators.includes(operator)){
             app.operators = [operator].concat(app.operators);
         }
-        app.indexSearched = Darknode
-        app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator}
+        app.indexSearched = Darknode;
+        app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator};
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
             app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
@@ -63,7 +63,7 @@ let app = new Vue({
             });
         },
         roundValue: function (val) {
-            return val.toFixed(6)
+            return val.toFixed(6);
         },
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
@@ -73,7 +73,7 @@ let app = new Vue({
             for (i in arr) {
                 if (arr[i].operator = find) {found = true}
             }
-            return found
+            return found;
         }
     },
     watch: {
@@ -91,7 +91,7 @@ let app = new Vue({
             if (val) {
                 console.log("We are currently loading darknodes. Please wait");
             } else {
-                console.log("Darknodes have finished loading.")
+                console.log("Darknodes have finished loading.");
             }
         }
     },
@@ -108,11 +108,11 @@ let app = new Vue({
                     opInf[this.darknodesInformation[dn].operator] = [dn];
                 }
             }
-            return opInf
+            return opInf;
         },
         sortedOperators: function() {
             return this.operators.sort(function(a,b) {
-                this.operatorInformation[a].length - this.operatorInformation[b].length
+                this.operatorInformation[a].length - this.operatorInformation[b].length;
             });
             
         }
