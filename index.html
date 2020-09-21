@@ -45,7 +45,7 @@
                     <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
                     <br>
                     <br>
-                    <!-- <div class="columns">
+                    <div class="columns">
                         <div class="column is-half">
                             <div class="columns is-multiline">
                                 <div class="column" v-for="dn in privateDarknodes">
@@ -55,7 +55,7 @@
                                         </header>
                                         <div class="card-content">
                                             <div class="content">
-                                                Operator: {{darknodesInformation[dn].operator}}
+                                                Operator: {{darknodesInformation()[dn].operator}}
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(inf, key) in sortedOperators" :key="allDarknodes">
+                                    <tr v-for="(inf, key) in operators">
                                         <td>
                                             {{key}}
                                         </td>
@@ -86,7 +86,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>

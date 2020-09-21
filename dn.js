@@ -85,10 +85,10 @@ let app = new Vue({
             }
             return opInf;
         },
-        sortedOperators: function() {
+        sortOperators: function() {
             let opInf = this.operatorInformation();
-            return this.operators.sort(function(a,b) {
-                opInf[a].length > opInf[b].length;
+            this.operators.sort(function(a,b) {
+                opInf[a].length < opInf[b].length;
             });
         }
     },
