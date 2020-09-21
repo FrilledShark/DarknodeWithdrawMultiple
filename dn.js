@@ -67,6 +67,13 @@ let app = new Vue({
         },
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
+        },
+        arrDictIncludes: function(arr, find) {
+            let found = false;
+            for (i in arr) {
+                if (arr[i].operator = find) {found = true}
+            }
+            return found
         }
     },
     watch: {
@@ -86,13 +93,6 @@ let app = new Vue({
             } else {
                 console.log("Darknodes have finished loading.")
             }
-        },
-        arrDictIncludes: function(arr, find) {
-            let found = false;
-            for (i in arr) {
-                if (arr[i].operator = find) {found = true}
-            }
-            return found
         }
     },
     computed: {
