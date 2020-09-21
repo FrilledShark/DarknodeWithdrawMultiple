@@ -55,7 +55,7 @@
                                         </header>
                                         <div class="card-content">
                                             <div class="content">
-                                                Operator: {{darknodesInformation()[dn].operator}}
+                                                Operator: {{darknodesInformation[dn].operator}}
                                             </div>
                                         </div>
                                     </div>
@@ -75,12 +75,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(inf, key) in operators">
+                                    <tr v-for="op in operators">
                                         <td>
-                                            {{key}}
+                                            {{op}}
                                         </td>
                                         <td>
-                                            {{inf.length}}
+                                            {{operatorInformation}}
                                         </td>
                                     </tr>
                                 </tbody>

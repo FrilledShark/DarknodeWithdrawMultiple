@@ -4,6 +4,11 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     app.fees = 0;
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
+        if (operatorInformation[operator]) {
+            operatorInformation[operator].push(allDarknodes[Darknode])
+        } else {
+            operatorInformation[operator] = [allDarknodes[Darknode]]
+        }
         if (!app.operators.includes(operator)){
             app.operators = [operator].concat(app.operators);
         }
@@ -26,6 +31,7 @@ let app = new Vue({
     data: {
         operators: [],
         darknodesInformation: {},
+        operatorInformation: {},
         indexSearched: 0,
         selectedAccount: "",
         fees: 0,
@@ -72,23 +78,9 @@ let app = new Vue({
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
         },
-        operatorInformation: function () {
-            let opInf = {};
-            for (dn in this.allDarknodes) {
-                if (this.darknodesInformation[this.allDarknodes[dn]]) {
-                    if (opInf[this.darknodesInformation[this.allDarknodes[dn]].operator]) {
-                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator].push(this.allDarknodes[dn]);
-                    } else {
-                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator] = [this.allDarknodes[dn]];
-                }
-            }
-            }
-            return opInf;
-        },
         sortOperators: function() {
-            let opInf = this.operatorInformation();
             this.operators.sort(function(a,b) {
-                opInf[a].length < opInf[b].length;
+                this.operatorInformation[a].length < this.operatorInformation[b].length;
             });
         }
     },
