@@ -1,4 +1,5 @@
 async function sortAllDarknodes(allDarknodes, selectedAccount) {
+    let specificFee = 0;
     app.privateDarknodes = [];
     app.fees = 0;
     for (Darknode in allDarknodes) {
@@ -7,10 +8,13 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
             app.operators = [operator].concat(app.operators);
         }
         app.indexSearched = Darknode;
-        app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator};
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
-            app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
+            specificFee = Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
+            app.fees += specificFee;
+            app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator, fee:specificFee};
+        } else {
+            app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator};
         }
     }
     app.loadingDarknodes = false;
@@ -93,6 +97,7 @@ let app = new Vue({
             let opInf = {};
             let tmp;
             for (dn in this.darknodesInformation) {
+                console.log(opInf[dn.operator], dn)
                 if (opInf[dn.operator]) {
                     tmp = opInf[this.darknodesInformation[dn].operator];  // This is already an array. Ensured by the else statement.
                     tmp.append(dn);
