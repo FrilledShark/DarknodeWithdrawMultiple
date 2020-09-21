@@ -107,6 +107,7 @@ let app = new Vue({
                     opInf[this.darknodesInformation[dn].operator] = [dn]
                 }
             }
+            return opInf
         },
         sortedOperators: function() {
             return this.operators.sort(function(a,b) {
