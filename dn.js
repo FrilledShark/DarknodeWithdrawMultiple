@@ -41,7 +41,7 @@ let app = new Vue({
         DarknodePayment: "",
         allDarknodes: "",
         privateDarknodes: "",
-        loadingDarknodes: "",
+        loadingDarknodes: false,
         renBTC: "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
     },
     methods: {
@@ -98,10 +98,11 @@ let app = new Vue({
         loadingDarknodes: function(val,oldval) {
             if (val) {
                 console.log("We are currently loading darknodes. Please wait");
+                this.sortOperators();
             } else {
                 console.log("Darknodes have finished loading.");
             }
-        }
+        },
     },
     // created() {}
 });
