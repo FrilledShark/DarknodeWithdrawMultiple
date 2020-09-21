@@ -96,7 +96,7 @@ let app = new Vue({
         },
     },
     computed: {
-        sortedOperators() {
+        sortedOperators: function() {
             this.operators.sort(function(a,b) {
                 this.operatorInformation[a].length - this.operatorInformation[b].length
             });
