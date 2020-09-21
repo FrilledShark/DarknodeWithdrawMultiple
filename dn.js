@@ -98,13 +98,14 @@ let app = new Vue({
     computed: {
         operatorInformation: function() {
             let opInf = [];
+            let tmp;
             for (dn in this.darknodesInformation) {
                 if (this.arrDictIncludes(opInf, dn.operator)) {
-                    let tmp = opInf[this.darknodesInformation[dn].operator]
-                    tmp.append(dn)
-                    opInf[this.darknodesInformation[dn].operator] = tmp
+                    tmp = opInf[this.darknodesInformation[dn].operator];
+                    tmp.append(dn);
+                    opInf[this.darknodesInformation[dn].operator] = tmp;
                 } else {
-                    opInf[this.darknodesInformation[dn].operator] = [dn]
+                    opInf[this.darknodesInformation[dn].operator] = [dn];
                 }
             }
             return opInf
