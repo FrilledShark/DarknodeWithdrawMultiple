@@ -21,20 +21,20 @@
 
 <body>
     <div id="app">
-        <section class="hero">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title" v-if="selectedAccount">
-                        Welcome {{ selectedAccount }}.
-                    </h1>
-                    <h1 class="title" v-else>
-                        <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
-                    </h1>
+        <section class="section">
+            <div class="container">
+                <h1 class="title" v-if="selectedAccount">
+                    Welcome {{ selectedAccount }}.
+                </h1>
+                <h1 class="title" v-else>
+                    <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
+                </h1>
+                <div v-if="allDarknodes">
                     <h2 v-if="loadingDarknodes">
-                        <span class="icon" v-if="loadingDarknodes">
-                            <i class="fas fa-money-bill-wave fa-pulse"></i>
-                        </span>
-                        {{getSearchPercentage()}} % of all Darknodes searched.
+                    <span class="icon" v-if="loadingDarknodes">
+                        <i class="fas fa-money-bill-wave fa-pulse"></i>
+                    </span>
+                    {{getSearchPercentage()}} % of all Darknodes searched.
                     </h2>
                     <h2 v-if="privateDarknodes">
                         You have {{privateDarknodes.length}} Darknodes: {{"[" + String(privateDarknodes).replace('"', "").replace(",", ", ") + "]"}}
@@ -43,6 +43,50 @@
                     <h2 v-if="privateDarknodes">They have earned {{roundValue(fees/10**8)}} renBTC and {{roundValue(pendingRewardPool*privateDarknodes.length/allDarknodes.length/10**8)}} renBTC pending</h2>
                     <br>
                     <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
+                    <br>
+                    <br>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column" v-for="dn in privateDarknodes">
+                                    <div class="card">
+                                        <header class="card-header">
+                                            {{dn}}
+                                        </header>
+                                        <div class="card-content">
+                                            <div class="content">
+                                                Operator: {{darknodesInformation[dn]}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Operator
+                                        </th>
+                                        <th>
+                                            Number of Darknodes
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(inf, key) operatorInformation">
+                                        <td>
+                                            {{key}}
+                                        </td>
+                                        <td>
+                                            {{inf.length}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

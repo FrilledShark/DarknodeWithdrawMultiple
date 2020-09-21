@@ -23,8 +23,8 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
 let app = new Vue({
     el: '#app',
     data: {
-        darknodesInformation: [],
-        operatorInformation: [],
+        darknodesInformation: {},
+        operatorInformation: {},
         indexSearched: 0,
         selectedAccount: "",
         fees: 0,
