@@ -71,6 +71,19 @@ let app = new Vue({
         },
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
+        },
+        opInf: function () {
+            let opInf = {};
+            for (dn in this.allDarknodes) {
+                if (this.darknodesInformation[this.allDarknodes[dn]]) {
+                    if (opInf[this.darknodesInformation[this.allDarknodes[dn]].operator]) {
+                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator].push(this.allDarknodes[dn]);
+                    } else {
+                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator] = [this.allDarknodes[dn]];
+                }
+            }
+            }
+            return opInf;
         }
     },
     watch: {
@@ -94,21 +107,12 @@ let app = new Vue({
     },
     computed: {
         operatorInformation: function() {
-            let opInf = {};
-            for (dn in this.allDarknodes) {
-                if (this.darknodesInformation[this.allDarknodes[dn]]) {
-                    if (opInf[this.darknodesInformation[this.allDarknodes[dn]].operator]) {
-                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator].push(this.allDarknodes[dn]);
-                    } else {
-                        opInf[this.darknodesInformation[this.allDarknodes[dn]].operator] = [this.allDarknodes[dn]];
-                }
-            }
-            }
-            return opInf;
+            return this.opInf();
         },
         sortedOperators: function() {
+            let opInf = this.opInf();
             return this.operators.sort(function(a,b) {
-                this.operatorInformation[a].length - this.operatorInformation[b].length;
+                opInf[a].length - opInf[b].length;
             });
             
         }
