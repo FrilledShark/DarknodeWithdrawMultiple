@@ -4,7 +4,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
         if (!app.operators.includes(operator)){
-            app.operators.append(operator)
+            app.operators = [operator].concat(app.operators);
         }
         app.indexSearched = Darknode
         app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator}
