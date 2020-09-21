@@ -6,6 +6,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
             app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
+            app.indexSearched = Darknode;
         }
     }
     app.loadingDarknodes = false;
@@ -15,6 +16,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
 let app = new Vue({
     el: '#app',
     data: {
+        indexSearched: 0,
         selectedAccount: "",
         fees: 0,
         pendingRewardPool: 0,
@@ -56,6 +58,9 @@ let app = new Vue({
         },
         roundValue: function (val) {
             return val.toFixed(6)
+        },
+        getSearchPercentage: function () {
+            return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
         }
     },
     watch: {
