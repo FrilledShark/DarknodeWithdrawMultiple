@@ -4,10 +4,10 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     app.fees = 0;
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
-        if (operatorInformation[operator]) {
-            operatorInformation[operator].push(allDarknodes[Darknode])
+        if (app.operatorInformation[operator]) {
+            app.operatorInformation[operator].push(allDarknodes[Darknode])
         } else {
-            operatorInformation[operator] = [allDarknodes[Darknode]]
+            app.operatorInformation[operator] = [allDarknodes[Darknode]]
         }
         if (!app.operators.includes(operator)){
             app.operators = [operator].concat(app.operators);
