@@ -30,7 +30,7 @@
                     <h1 class="title" v-else>
                         <button @click="setProvider()" class="is-large button" id="connect">Connect wallet</button>
                     </h1>
-                    <h2 if="loadingDarknodes">
+                    <h2 v-if="loadingDarknodes">
                         <span class="icon" v-if="loadingDarknodes">
                             <i class="fas fa-money-bill-wave fa-pulse"></i>
                         </span>
