@@ -68,7 +68,7 @@ let app = new Vue({
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
         },
-        arrDictIncludes: function(arr, find) {
+        dictIncludes: function(arr, find) {
             let found = false;
             for (i in arr) {
                 if (arr[i].operator = find) {found = true}
@@ -100,8 +100,8 @@ let app = new Vue({
             let opInf = {};
             let tmp;
             for (dn in this.darknodesInformation) {
-                if (this.arrDictIncludes(opInf, dn.operator)) {
-                    tmp = [opInf[this.darknodesInformation[dn].operator]];
+                if (this.dictIncludes(opInf, dn.operator)) {
+                    tmp = opInf[this.darknodesInformation[dn].operator];
                     tmp.append(dn);
                     opInf[this.darknodesInformation[dn].operator] = tmp;
                 } else {
