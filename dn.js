@@ -96,9 +96,8 @@ let app = new Vue({
         operatorInformation: function() {
             let opInf = {};
             let tmp;
-            for (dn in this.darknodesInformation) {
-                console.log(opInf[dn.operator], dn)
-                if (opInf[dn.operator]) {
+            for (dn in this.allDarknodes) {
+                if (opInf[this.darknodesInformation[dn].operator.operator]) {
                     tmp = opInf[this.darknodesInformation[dn].operator];  // This is already an array. Ensured by the else statement.
                     tmp.append(dn);
                     opInf[this.darknodesInformation[dn].operator] = tmp;
