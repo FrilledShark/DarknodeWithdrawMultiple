@@ -95,9 +95,7 @@ let app = new Vue({
     computed: {
         operatorInformation: function() {
             let opInf = {};
-            let tmp;
             for (dn in this.allDarknodes) {
-                console.log(this.darknodesInformation[this.allDarknodes[dn]]);
                 if (this.darknodesInformation[this.allDarknodes[dn]]) {
                     if (opInf[this.darknodesInformation[this.allDarknodes[dn]].operator]) {
                         opInf[this.darknodesInformation[this.allDarknodes[dn]].operator].push(this.allDarknodes[dn]);
