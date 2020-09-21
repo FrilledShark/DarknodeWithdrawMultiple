@@ -67,13 +67,6 @@ let app = new Vue({
         },
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
-        },
-        dictIncludes: function(arr, find) {
-            let found = false;
-            for (i in arr) {
-                if (arr[i].operator = find) {found = true}
-            }
-            return found;
         }
     },
     watch: {
@@ -100,8 +93,8 @@ let app = new Vue({
             let opInf = {};
             let tmp;
             for (dn in this.darknodesInformation) {
-                if (this.dictIncludes(opInf, dn.operator)) {
-                    tmp = opInf[this.darknodesInformation[dn].operator];
+                if (opInf[dn.operator]) {
+                    tmp = opInf[this.darknodesInformation[dn].operator];  // This is already an array. Ensured by the else statement.
                     tmp.append(dn);
                     opInf[this.darknodesInformation[dn].operator] = tmp;
                 } else {
