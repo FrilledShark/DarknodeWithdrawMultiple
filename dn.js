@@ -97,11 +97,11 @@ let app = new Vue({
     },
     computed: {
         operatorInformation: function() {
-            let opInf = [];
+            let opInf = {};
             let tmp;
             for (dn in this.darknodesInformation) {
                 if (this.arrDictIncludes(opInf, dn.operator)) {
-                    tmp = opInf[this.darknodesInformation[dn].operator];
+                    tmp = [opInf[this.darknodesInformation[dn].operator]];
                     tmp.append(dn);
                     opInf[this.darknodesInformation[dn].operator] = tmp;
                 } else {
