@@ -8,12 +8,6 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         }
         app.indexSearched = Darknode
         app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator}
-        let temp_arr_one = app.operatorInformation[operator]
-        let temp_arr_two = [allDarknodes[Darknode]]
-        if (app.operatorInformation[operator])
-            {app.operatorInformation[operator] = temp_arr_two.concat(temp_arr_one)}
-        else
-            {app.operatorInformation[operator] = temp_arr_two}
         if (operator == selectedAccount) {
             app.privateDarknodes.push(allDarknodes[Darknode]);
             app.fees += Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
@@ -28,7 +22,6 @@ let app = new Vue({
     data: {
         operators: [],
         darknodesInformation: {},
-        operatorInformation: {},
         indexSearched: 0,
         selectedAccount: "",
         fees: 0,
@@ -94,12 +87,32 @@ let app = new Vue({
                 console.log("Darknodes have finished loading.")
             }
         },
+        arrDictIncludes: function(arr, find) {
+            let found = false;
+            for (i in arr) {
+                if (arr[i].operator = find) {found = true}
+            }
+            return found
+        }
     },
     computed: {
+        operatorInformation: function() {
+            let opInf = [];
+            for (dn in darknodesInformation) {
+                if (arrDictIncludes(opInf, dn.operator)) {
+                    let tmp = opInf[darknodesInformation[dn].operator]
+                    tmp.append(dn)
+                    opInf[darknodesInformation[dn].operator] = tmp
+                } else {
+                    opInf[darknodesInformation[dn].operator] = [dn]
+                }
+            }
+        },
         sortedOperators: function() {
-            this.operators.sort(function(a,b) {
+            return this.operators.sort(function(a,b) {
                 this.operatorInformation[a].length - this.operatorInformation[b].length
             });
+            
         }
     }
     // created() {}
