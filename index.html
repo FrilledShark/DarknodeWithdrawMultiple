@@ -79,7 +79,7 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody v-if="operators">
                                     <tr v-for="op in operators.reverse()">
                                         <td>
                                             {{op}}
