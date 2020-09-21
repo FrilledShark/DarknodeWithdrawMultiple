@@ -72,7 +72,7 @@ let app = new Vue({
         getSearchPercentage: function () {
             return (this.indexSearched/this.allDarknodes.length * 100).toFixed(2);
         },
-        opInf: function () {
+        operatorInformation: function () {
             let opInf = {};
             for (dn in this.allDarknodes) {
                 if (this.darknodesInformation[this.allDarknodes[dn]]) {
@@ -84,6 +84,12 @@ let app = new Vue({
             }
             }
             return opInf;
+        },
+        sortedOperators: function() {
+            let opInf = this.operatorInformation();
+            return this.operators.sort(function(a,b) {
+                opInf[a].length - opInf[b].length;
+            });
         }
     },
     watch: {
@@ -105,17 +111,5 @@ let app = new Vue({
             }
         }
     },
-    computed: {
-        operatorInformation: function() {
-            return this.opInf();
-        },
-        sortedOperators: function() {
-            let opInf = this.opInf();
-            return this.operators.sort(function(a,b) {
-                opInf[a].length - opInf[b].length;
-            });
-            
-        }
-    }
     // created() {}
 });
