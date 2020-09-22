@@ -2,6 +2,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     let specificFee = 0;
     app.privateDarknodes = [];
     app.fees = 0;
+    app.operators = [];
     for (Darknode in allDarknodes) {
         operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
         if (app.operatorInformation[operator]) {
@@ -10,7 +11,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
             app.operatorInformation[operator] = [allDarknodes[Darknode]]
         }
         if (!app.operators.includes(operator)){
-            app.operators = [operator].concat(app.operators);
+            app.operators.push(operator);
         }
         app.indexSearched = Darknode;
         if (operator == selectedAccount) {
