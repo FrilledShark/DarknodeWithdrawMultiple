@@ -61,6 +61,17 @@
                                             </p>
                                         </header>
                                         <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <svg :data-jdenticon-value="dn" width="48" height="48">
+                                                        Fallback text or image for browsers not supporting inline svg.
+                                                    </svg>
+                                                </div>
+                                                <div class="media-content">
+                                                  <p class="title is-4">easyShowEthereumAddress(dn)</p>
+                                                  <!-- <p class="subtitle is-6">@johnsmith</p> -->
+                                                </div>
+                                              </div>
                                             <div class="content">
                                                 Operator: {{easyShowEthereumAddress(darknodesInformation[dn].operator)}}
                                                 <br>
@@ -110,7 +121,8 @@
     </div>
 
     
-  
+    <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
 
