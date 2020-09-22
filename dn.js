@@ -92,7 +92,7 @@ let app = new Vue({
         }
     },
     watch: {
-        privateDarknodes: function (val, oldval) {
+        easyShowEthereumAddress: function (val, oldval) {
             jdenticon();
         },
         web3: function (val, oldval) {
