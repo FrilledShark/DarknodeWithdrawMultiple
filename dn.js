@@ -92,6 +92,9 @@ let app = new Vue({
         }
     },
     watch: {
+        privateDarknodes: function (val, oldval) {
+            jdenticon();
+        },
         web3: function (val, oldval) {
             this.getAllDarknodes();
         },
