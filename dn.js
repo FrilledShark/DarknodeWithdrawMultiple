@@ -15,10 +15,10 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         }
         app.indexSearched = Darknode;
         if (operator == selectedAccount) {
-            app.privateDarknodes.push(allDarknodes[Darknode]);
-            specificFee = Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
-            app.fees += specificFee;
             app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator, fee:specificFee};
+            specificFee = Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
+            app.privateDarknodes.push(allDarknodes[Darknode]);
+            app.fees += specificFee;
         } else {
             app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator};
         }
