@@ -53,17 +53,21 @@
                                         <header class="card-header">
                                             <p class="card-header-title">
                                                 {{easyShowEthereumAddress(dn)}} 
-                                                <button class="button is-small is-white">
-                                                    <span class="icon" @click="toClipBoard(dn)">
-                                                        <i class="fas fa-clipboard"></i>
-                                                    </span>
-                                                </button>
+                                                <div class="card-header-icon">
+                                                    <button class="button is-small is-white">
+                                                        <span class="icon" @click="toClipBoard(dn)">
+                                                            <i class="fas fa-clipboard"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
                                             </p>
                                         </header>
                                         <div class="card-content">
                                             <div class="content">
-                                                Operator: {{darknodesInformation[dn].operator}}
+                                                Operator: {{easyShowEthereumAddress(darknodesInformation[dn].operator)}}
+                                                <br>
                                                 Fees: {{roundValue(darknodesInformation[dn].fee)}}
+                                                <br>
                                                 Pending Fees: Fees: {{roundValue(pendingRewardPool/allDarknodes.length/10**8)}}
                                             </div>
                                         </div>
@@ -87,7 +91,12 @@
                                 <tbody v-if="operators">
                                     <tr v-for="op in operators">
                                         <td>
-                                            {{op}}
+                                            {{easyShowEthereumAddress(op)}}
+                                            <button class="button is-small is-white">
+                                                <span class="icon" @click="toClipBoard(op)">
+                                                    <i class="far fa-clipboard"></i>
+                                                </span>
+                                            </button>
                                         </td>
                                         <td>
                                             {{operatorInformation[op].length}}
