@@ -52,7 +52,12 @@
                                     <div class="card">
                                         <header class="card-header">
                                             <p class="card-header-title">
-                                                {{easyShowEthereumAddress(dn)}}
+                                                {{easyShowEthereumAddress(dn)}} 
+                                                <button class="button is-small is-white">
+                                                    <span class="icon" @click="toClipBoard(dn)">
+                                                        <i class="fas fa-clipboard"></i>
+                                                    </span>
+                                                </button>
                                             </p>
                                         </header>
                                         <div class="card-content">

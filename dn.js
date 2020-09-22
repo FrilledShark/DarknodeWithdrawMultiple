@@ -85,7 +85,10 @@ let app = new Vue({
             });
         },
         easyShowEthereumAddress: function (address) {
-            return address.substring(0,7) + "..." + address.substring(address.length-5)
+            return address.substring(0,7) + "..." + address.substring(address.length-5);
+        },
+        toClipBoard: function(text) {
+            navigator.clipboard.writeText(text);
         }
     },
     watch: {
