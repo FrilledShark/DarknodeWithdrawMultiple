@@ -81,7 +81,7 @@ let app = new Vue({
         },
         sortOperators: function() {
             this.operators.sort(function(a,b) {
-                return app.operatorInformation[a].length > app.operatorInformation[b].length;
+                return app.operatorInformation[a].length < app.operatorInformation[b].length;
             });
         }
     },
