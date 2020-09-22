@@ -83,6 +83,9 @@ let app = new Vue({
             this.operators.sort(function(a,b) {
                 return app.operatorInformation[a].length < app.operatorInformation[b].length;
             });
+        },
+        easyShowEthereumAddress: function (address) {
+            return address.substring(0,7) + "..." + address.substring(a.length-5)
         }
     },
     watch: {
