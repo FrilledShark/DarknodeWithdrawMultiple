@@ -93,7 +93,7 @@ let app = new Vue({
             } else {
                 return address.substring(address.length-5);
             }
-        }
+        },
         toClipBoard: function(text) {
             navigator.clipboard.writeText(text);
         }
