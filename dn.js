@@ -92,9 +92,6 @@ let app = new Vue({
         }
     },
     watch: {
-        easyShowEthereumAddress: function (val, oldval) {
-            jdenticon();
-        },
         web3: function (val, oldval) {
             this.getAllDarknodes();
         },
@@ -113,6 +110,11 @@ let app = new Vue({
                 console.log("Darknodes have finished loading.");
             }
         },
+        privateDarknodes: function(val, oldval) {
+            setTimeout(function () {
+                jdenticon();
+            }, 1000);
+        }
     },
     // created() {}
 });
