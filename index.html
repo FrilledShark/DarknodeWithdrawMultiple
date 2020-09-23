@@ -44,9 +44,9 @@
                     <br>
                     <br>
                     <div class="columns">
-                        <div class="column is-three-fifths">
+                        <div class="column">
                             <div class="columns is-multiline">
-                                <div class="column" v-for="dn in privateDarknodes">
+                                <div class="column is-half" v-for="dn in privateDarknodes">
                                     <div class="card">
                                         <!-- <header class="card-header">
                                             <p class="card-header-title">
@@ -64,7 +64,7 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <svg :data-jdenticon-value="dn.substring(0,20)" width="48" height="48">
-                                                        Fallback text or image for browsers not supporting inline svg.
+                                                        Jdenticon
                                                     </svg>
                                                 </div>
                                                 <div class="media-content">
@@ -75,7 +75,7 @@
                                             <div class="content">
                                                 Operator: {{easyShowEthereumAddress(darknodesInformation[dn].operator)}}
                                                 <br>
-                                                Fees: {{roundValue(darknodesInformation[dn].fee)}}
+                                                Claimed Fees: {{roundValue(darknodesInformation[dn].fee)}}
                                                 <br>
                                                 Pending Fees: {{roundValue(pendingRewardPool/allDarknodes.length/10**8)}}
                                             </div>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="column is-narrow">
                             <button @click="sortOperators()">Sort table</button>
                             <table class="table">
                                 <thead>
