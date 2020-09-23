@@ -46,7 +46,7 @@
                     <div class="columns">
                         <div class="column">
                             <div class="columns is-multiline">
-                                <div style="min-width: 240px;" class="column" v-for="dn in privateDarknodes">
+                                <div style="min-width: 260px;" class="column" v-for="dn in privateDarknodes">
                                     <div class="card">
                                         <!-- <header class="card-header">
                                             <p class="card-header-title">
@@ -68,8 +68,8 @@
                                                     </svg>
                                                 </div>
                                                 <div class="media-content">
-                                                  <p class="title is-4">{{easyShowEthereumAddress(dn)}}</p>
-                                                  <!-- <p class="subtitle is-6">@johnsmith</p> -->
+                                                  <p class="title is-4">{{divideShowEthereumAddress(dn, true)}}...</p>
+                                                  <p class="subtitle is-6">{{divideShowEthereumAddress(dn, false)}}</p>
                                                 </div>
                                               </div>
                                             <div class="content">
