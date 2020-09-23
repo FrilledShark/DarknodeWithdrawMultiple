@@ -121,9 +121,6 @@ let app = new Vue({
             setTimeout(function () {
                 jdenticon();
             }, 1000);
-        },
-        operatorInformation: function () {
-            this.sortOperators();
         }
     },
     // created() {}
