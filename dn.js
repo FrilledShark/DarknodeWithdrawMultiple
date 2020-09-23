@@ -122,7 +122,7 @@ let app = new Vue({
                 jdenticon();
             }, 1000);
         },
-        darknodesInformation: function () {
+        operatorInformation: function () {
             this.sortOperators();
         }
     },
