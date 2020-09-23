@@ -112,15 +112,18 @@ let app = new Vue({
         loadingDarknodes: function(val,oldval) {
             if (val) {
                 console.log("We are currently loading darknodes. Please wait");
-                this.sortOperators();
             } else {
                 console.log("Darknodes have finished loading.");
+                this.sortOperators();
             }
         },
         privateDarknodes: function(val, oldval) {
             setTimeout(function () {
                 jdenticon();
             }, 1000);
+        },
+        darknodesInformation: function () {
+            this.sortOperators();
         }
     },
     // created() {}
