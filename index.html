@@ -40,7 +40,7 @@
                     <br>
                     <h2 v-if="privateDarknodes">They have earned {{roundValue(fees)}} renBTC and {{roundValue(pendingRewardPool*privateDarknodes.length/allDarknodes.length/10**8)}} renBTC pending</h2>
                     <br>
-                    <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
+                    <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from below Darknodes</button>
                     <br>
                     <br>
                     <div class="columns">
