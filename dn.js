@@ -4,7 +4,7 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
     app.fees = 0;
     app.operators = [];
     for (Darknode in allDarknodes) {
-        operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
+        const operator = await app.DarknodeRegistry.methods.getDarknodeOperator(allDarknodes[Darknode]).call();
         if (app.operatorInformation[operator]) {
             app.operatorInformation[operator].push(allDarknodes[Darknode])
         } else {
@@ -15,8 +15,8 @@ async function sortAllDarknodes(allDarknodes, selectedAccount) {
         }
         app.indexSearched = Darknode;
         if (operator == selectedAccount) {
+            specificFee = (Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call()))/10**8;
             app.darknodesInformation[allDarknodes[Darknode]] = {operator:operator, fee:specificFee};
-            specificFee = Number(await app.DarknodePayment.methods.darknodeBalances(allDarknodes[Darknode], app.renBTC).call());
             app.privateDarknodes.push(allDarknodes[Darknode]);
             app.fees += specificFee;
         } else {

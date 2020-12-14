@@ -38,7 +38,7 @@
                         You have {{privateDarknodes.length}} Darknodes: {{"[" + String(privateDarknodes).replace('"', "").replace(",", ", ") + "]"}}
                     </h2>
                     <br>
-                    <h2 v-if="privateDarknodes">They have earned {{roundValue(fees/10**8)}} renBTC and {{roundValue(pendingRewardPool*privateDarknodes.length/allDarknodes.length/10**8)}} renBTC pending</h2>
+                    <h2 v-if="privateDarknodes">They have earned {{roundValue(fees/10**8)}} renBTC and {{roundValue(pendingRewardPool*privateDarknodes.length/allDarknodes.length)}} renBTC pending</h2>
                     <br>
                     <button v-if="privateDarknodes" class="button is-small" @click="writeFeeWithdrawal()">Withdraw renBTC from above Darknodes</button>
                     <br>
@@ -127,7 +127,7 @@
     <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
 
     <script src="/DarknodeWithdrawMultiple/abi.js"></script>
-    <script src="/DarknodeWithdrawMultiple/dn.js"></script>
+    <script src="/DarknodeWithdrawMultiple/dn.js?v=1"></script>
 </body>
 
 </html>
