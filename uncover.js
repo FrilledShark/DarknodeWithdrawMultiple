@@ -17,7 +17,6 @@ let app = new Vue({
             // this.web3.eth.getAccounts().then(
             //     (accounts) => app.selectedAccount = accounts[0]
             // ); 
-            this.LiquidityProtectionStore = new this.web3.eth.Contract(LiquidityProtectionStore, "0xf5FAB5DBD2f3bf675dE4cB76517d4767013cfB55");
         },
         evalveTx: function(tx_data) {
             // app.web3.eth.getTransaction('tx_hash', (err,x) => tx_data = x)
@@ -31,8 +30,8 @@ let app = new Vue({
             }
             return addresses;
         }, 
-        getTx: function(tx_hash) {
-            this.web3.eth.getTransactionReceipt(tx_hash, (err, x) => this.addresses = this.evalveTx(x))
+        getTx: function() {
+            this.web3.eth.getTransactionReceipt(this.transaction, (err, x) => this.addresses = this.evalveTx(x))
         }
     },
     created: function() {
