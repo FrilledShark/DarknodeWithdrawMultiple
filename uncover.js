@@ -38,7 +38,7 @@ let app = new Vue({
     created: function() {
         setTimeout(() => app.setupWeb3(), 200);
     }
-}
+});
 
 
 
