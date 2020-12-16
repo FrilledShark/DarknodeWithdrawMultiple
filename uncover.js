@@ -23,8 +23,8 @@ let app = new Vue({
             let addresses = [];
             for (let event of tx_data.logs) {
                 if (this.web3.utils.bytesToHex(event.topics[0] == "0x1619fc95050ffb8c94c9077c82b3e1ebbf8d571b6234241c55ba0aaf40da019e")) {
-                    let addr = this.web3.utils.hexToUtf8(event.data.substring(64*3+2, 64*4+2));
-                    addr = addr + this.web3.utils.hexToUtf8(event.data.substring(64*4+2, 64*5+2));
+                    let addr = this.web3.utils.hexToUtf8("0x" + event.data.substring(64*3+2, 64*4+2));
+                    addr = addr + this.web3.utils.hexToUtf8("0x" + event.data.substring(64*4+2, 64*5+2));
                     address.push(addr);
                 }
             }
