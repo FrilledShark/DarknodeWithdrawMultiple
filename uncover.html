@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alexander's Darknode portal</title>
+    <title>Get the bitcoin address for a renBTC burn</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css" />
@@ -19,9 +19,10 @@
 
 <body>
     <div id="app">
-        <input v-model="transaction"> <button @click="getTx"></button>
+        Transaction hash
+        <input v-model="transaction"> <button @click="getTx">Lookup transaction hash</button>
 
-        <div>{{addresses}}</div>
+        <div>Bitcoin addresses: {{addresses}}</div>
     </div>
 
     
