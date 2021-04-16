@@ -11,7 +11,7 @@ web3 = Web3(Web3.HTTPProvider(infura))
 print(web3.isConnected())
 
 
-tx = "0xb3a6fcdb7f093185e5e838844463de3e2306cd72a5f2507cadde47899bb19c57"
+tx = "0x2d91b59f7afc352e027fecea78935992979a46dce12efd2fe2607a9a4bd6f43c"
 
 # Check if transaction is pending
 # if transaction is pending:
